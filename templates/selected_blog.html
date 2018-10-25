@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Selected Blog Post {% endblock %}
+{% block content %}
+    <div>
+
+    <h2>{{blog.title}}</h2>
+    <p>{{blog.content}}</p>
+    <p class="users">Written by <a href= "/blog?user= {{ user.id }}"> {{ user.username }} </a></p>
+    <p>{{blog.pubdate}}</p>
+
+    </div>
+
+{% endblock %}

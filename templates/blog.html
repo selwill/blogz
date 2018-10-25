@@ -1,21 +1,21 @@
 {% extends "base.html" %}
-
+{% block title %} Blogz {% endblock %}
+{% block header %} My Blog Post {% endblock %}
 {% block content %}
-      <div class="blog blog-text wow fadeIn">
 
-        <h1>Blog Posts</h1>
+{% if blogs|length == 0 %}
+   <p>No posts yet</p>
+   {% else %}
 
-        <hr>
-
-          {% for post in posts %}
-          <div class="post">
-
-            <a href="/blog?id={{post.id}}"><p><h2>{{ post.title }}</h2></p></a>
-            <p class="body-text">{{ post.body }}</p>
-            <p class="pub-date">Posted on: {{ post.pub_date }}</p>
-            <p class="user">Posted by: <a href="/blog?userid={{post.owner_id}}">{{ post.owner.username }}</a></p>
-
-          </div>
-          {% endfor %}
-      </div>
+        {% for blog in blogs %}
+        <div>
+          <h2><a href="/selected_blog?id={{ blog.id }}">{{blog.title}}</a></h2>
+            <br/>
+          <p>{{blog.content}}</p>
+          <p class="author">written by <a href = "/blog?user={{ blog.user_id }}" > filler </a></p>
+          <p>{{blog.pubdate}}</p>
+        </div>
+        <hr/>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

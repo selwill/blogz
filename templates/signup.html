@@ -1,24 +1,32 @@
 {% extends "base.html" %}
-
+{% block title %} Blogz {% endblock %}
+{% block header %} Signup {% endblock %}
 {% block content %}
-      <div class="signup">
+<form method="post">
+    <table>
+        <tr>
+            <td><label for="username">Username</label></td>
+            <td>
+                <input name="username" type="text" value="{{username}}">
+                <span class="error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+            <td>
+                <input name="password" type="password">
+                <span class="error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="verify_pw">Verify Password</label></td>
+            <td>
+                <input name="verify_pw" type="password">
+                <span class="error"></span>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" />
+</form>
 
-        <h1>Sign up to start posting!</h1>
-
-        <form action="/signup" method="POST">
-
-          <input name="username" type="text" value="{{ username }}" placeholder="Username">
-          <p class="error">{{ username_error }}{{ exist_error }}</p>
-
-          <input name="password" type="password" value="{{ password }}" placeholder="Password">
-          <p class="error">{{ password_error }}</p>
-
-          <input name="verify" type="password" value="{{ verify }}" placeholder="Verify Password">
-          <p class="error">{{ verify_error }}</p>
-
-          <input type="submit" value="Sign Up">
-
-        </form>
-
-      </div>
 {% endblock %}

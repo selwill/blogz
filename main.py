@@ -5,7 +5,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://blogz:root@localhost:3306/blogz'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://blogz2:root@localhost:3306/blogz2'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 app.secret_key = "jfie838jFJf5h03.s{#"
@@ -36,7 +36,7 @@ class User(db.Model):
         self.username = username
         self.password = password
 
-def getAllBlog():
+'''def getAllBlog():
     return Blogz.query.all()
 
 def getAllUser():
@@ -227,7 +227,7 @@ def newpost():
             return redirect('/selected_blog?id='+ blog_id)
 
     return render_template('newpost.html', title='New Post')
-
+'''
 
 if __name__ == '__main__':
     app.run()

@@ -90,10 +90,10 @@ def signup():
             username = ''
             flash('Your username should be between 5 and 20 characters.')
 
-        elif existing_user:
-            username_error = False
-            username = ''
-            flash('The username your are trying to use it already taken - Please try again.')
+        #elif existing_user:
+        #    username_error = False
+        #    username = ''
+        #    flash('The username your are trying to use it already taken - Please try again.')
 
         #verify Passwords
         if password == '':
@@ -162,7 +162,7 @@ def index():
 def showuser():
     users = User.query.filter_by(username=session['user_id']).first()
     user_id = request.args.get('users')
-    blogs = Blog.query.filter_by(username=user_id).all()
+    blogs = Blogz.query.filter_by(username=user_id).all()
     return render_template('singleuser.html', users=users, blogs=blogs)
 
 

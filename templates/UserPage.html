@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1> {{ title }} </h1>
+    <h3> {{ welcome }} </h3>
+
+    {% if blogs|length == 0 %}
+        <p> No blogs yet </p>
+    {% else %}
+        <table>
+            <thead>
+                <td> 
+                    <p><b>Post title</b></p>
+                </td>
+                <td> 
+                    <p><b>Post Body</b></p>
+                </td>
+            </thead>
+        {% for blog in blogs %}
+            <form id= "individual_blog" action="/individual">
+                <tr>
+                    <td>
+                        <input form= "individual_blog" type= "submit" 
+                            class= "link_button" name= "blog_title" 
+                            value= "{{ blog.title }}"/>
+                    </td>
+                    <!--<td>
+                        <form id= "individual_user" action "/">
+                            <input form= "individual_user" type= "submit" 
+                                class= "link_button" name= "user" 
+                                value= "{{ blog.owner }}"/>
+                        </form>
+                    </td>-->
+                    <td> 
+                        {{ blog.body }}
+                    </td>
+                </tr>
+            </form>
+        {% endfor %}
+
+        </table>
+    {% endif %}
+
+
+{% endblock %}

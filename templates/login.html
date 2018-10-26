@@ -1,24 +1,32 @@
 {% extends "base.html" %}
-{% block title %} Blogz {% endblock %}
-{% block header %} Login {% endblock %}
+
 {% block content %}
-    <p class="error"></p>
-    <form method="post">
-        <table>
-            <tr>
-                <td><label for="username">Username</label></td>
-                <td>
-                    <input name="username" type="text" value="{{username}}">
-                </td>
-            </tr>
-            <tr>
-                <td><label for="password">Password</label></td>
-                <td>
-                    <input name="password" type="password">
-                </td>
-            </tr>
-        </table>
-        <input type="submit">
-    </form>
-    <p>Don't have an account? <a href="/signup">Create one!</a></p>
-{% endblock %}
+
+<h1>{{ title }}</h1>
+
+<form action="/login" method="post">
+    <table>
+        <tr>
+            <td>
+                <label for="username"> Username: </label>
+            </td>
+            <td>
+                <input name="username" type="text" value="{{ username }}">
+                <p class= "error"> {{ name_error }} </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="password"> Password: </label>
+            </td>
+            <td>
+                <input name="password" type="password">
+                <p class= "error"> {{ pass_error }} </p>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Login">
+</form>
+<p>Don't have an account? Click <a href= '/register'>here</a> to register </p>
+
+{% endblock %

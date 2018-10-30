@@ -1,67 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>{{title}}</title>
+        <title>Blogz!</title>
         <style>
-            *{
-                font-family: 'Times New Roman', Times, serif;
+            h1 {
+                text-align: center;
             }
             .error {
                 color: red;
             }
-            table, tr, td {
-                border: 1px solid black;
-            }
-            .link_button { 
-                background: none;
-                border: none;
-                text-decoration: underline;
-                cursor: pointer; 
-                font-size: 1.065em;
-            }
-            header, footer {
-                text-align: center;
-                font-size: 1.25em;
-                background-color: #ff5a73;
-                border: 1px solid black;
-            }
-            body {
-                background-color: red;
-            }
-            main {
-                background-color: #ff9392;
-                font-size: 1.125em;
-                border: 1px solid black;
-            }
-            thead {
-                font-size: 1.125em;
-                text-align: center;
-            }
         </style>
     </head>
     <body>
-        <header>
-            <div>
-                <table>
-                    <tr>
-                        <td> <a href= '/blog'> Home </a> </td>
-                        <td> <a href= '/UserPage'> Users </a> </td>
-                        <td> <a href= '/add'> Add a blog post </a> </td>
-                        <td> <a href= '/login'> Login </a> </td>
-                        <td> <a href= '/logout'> Logout </a> </td>
-                        <td> <a href= '/register'> Register </a> </td> 
-                    </tr>
-                </table>
-            </div>
-        </header>
-        <br>
-        <main>
+        <div class="navigation">
+                <a href="/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/blog">All Blogs</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/newpost">New Blog</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/login">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout">Logout</a>
+        </div>
 
-            {% block content %}
-
-            {% endblock %}
-
-        </main>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            <ul>
+            {% for category, message in messages %}
+                <li class='{{category}}'>{{message}}</li>
+            {% endfor %}   
+        </ul>
+        {% endwith %}
+        <br />
+        {% block content %}
         
+        {% endblock %}
     </body>
 </html>

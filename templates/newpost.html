@@ -1,25 +1,34 @@
 {% extends "base.html" %}
-{% block title %} New Blog Entry{% endblock %}
 
 {% block content %}
-
-<h2>Write a New Blog Post</h2>
-    <p class="error">{{ title_error }}</p>
-    <p class="error">{{ content_error }}</p>
-<form method='post'>
-    <div>
-        <label>Title</br>
-            <input type="text" name="blog_title" value=""/>
-        </label>
-    </div>
-    </br>
-    <div>
-        <label>Body</br>
-            <textarea name="blog_content" value=""></textarea>
-            <span class="error">{{content_error}}</span>
-        </label>
-    </div>
-    <input type="submit" value='Post'/>
-</form>
-
+<main class="container">
+    <h1>Add a Blog Entry</h1>
+    <form action="/newpost" id="new_post" method="post">
+        <table>
+            <tr>
+                <td>
+                    <label for="title">Title for your new blog:</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input name="title" type="text" value="{{ title }}"/>
+                    <span class="error">{{ title_error }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <br /><label for="body">Your new blog:</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea name="body" form="new_post" rows="15" cols="45">{{ body }}</textarea>
+                    <span class="error">{{ body_error }}</span>
+                </td>
+            </tr>
+        </table>
+        <br /><input type="submit" value="Add Entry" class="form-submit-button " />
+    </form> 
+</main>
 {% endblock %}

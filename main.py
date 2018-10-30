@@ -8,7 +8,7 @@ app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://blogz:root@localhost:3306/blogz'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
-app.secret_key = "13njdiqw8jwgwuiw6"
+app.secret_key = "osdafhiewwgg92r924r"
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
